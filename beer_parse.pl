@@ -16,15 +16,15 @@ if(-e $outputfile) {
 	system("touch $outputfile");
 }
 
-open(INPUT, $inputfile);
+open(my $fh, $inputfile);
 
-my @input = <INPUT>;
-close(INPUT);
+#my @input = <INPUT>;
+#close(INPUT);
 
-my $iteration = 0;
+
 
 open (OUTPUT, ">>", $outputfile);
-foreach my $line(@input){
+while ( my $line = <$fh>) {
 	#if line contains shit..then grab what we want and insert with a trailing comma
 	# if line is blank, then insert a newline into the file.
 	if($line =~ /([a-zA-Z]+\/[a-zA-Z]+: )(.+)/){
