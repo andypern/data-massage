@@ -29,7 +29,7 @@ while ( my $line = <$fh>) {
 	# if line is blank, then insert a newline into the file.
 	if($line =~ /([a-zA-Z]+\/[a-zA-Z]+: )(.+)/){
 		chomp($line);
-		print OUTPUT "$2,";
+		print OUTPUT "\"$2\",";
 	}elsif($line =~ /^\s*$/){
 		print OUTPUT "\n";
 	}
