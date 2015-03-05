@@ -26,8 +26,15 @@ open(my $fh, $inputfile);
 open (OUTPUT, ">>", $outputfile);
 while ( my $line = <$fh>) {
 	#if line contains shit..then grab what we want and insert with a trailing comma
+	#unless the line ends with a slew of whitespace..meaning its the last field of a record
+	#in that case, don't insert a comma at the end of the line
 	# if line is blank, then insert a newline into the file.
-	if($line =~ /([a-zA-Z]+\/[a-zA-Z]+: )(.+)/){
+	
+	if($line =~ /([a-zA-Z]+\/[a-zA-Z]+: )(.+)([\s+][^\n])$/){
+		chomp($line);
+		print OUTPUT "\"$2\"";
+	}
+	elsif($line =~ /([a-zA-Z]+\/[a-zA-Z]+: )(.+)/){
 		chomp($line);
 		print OUTPUT "\"$2\",";
 	}elsif($line =~ /^\s*$/){
