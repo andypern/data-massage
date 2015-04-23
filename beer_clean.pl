@@ -41,6 +41,7 @@ while ( my $line = <$fh>) {
 			print OUTPUT "$line\n";
 		}	
 	
+	}
 }
 
 close(OUTPUT);
