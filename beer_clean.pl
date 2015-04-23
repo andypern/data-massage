@@ -37,7 +37,7 @@ while ( my $line = <$fh>) {
     if ($parser->parse($line)) {
         my @columns = $parser->fields();
 		
-		if($columns[3] ~=/[0-9]+\.[0-9]+/){
+		if($columns[3] =~/[0-9]+\.[0-9]+/){
 			print OUTPUT "$line\n";
 		}	
 	
